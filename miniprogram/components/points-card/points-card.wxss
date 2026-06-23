@@ -1,0 +1,98 @@
+/* components/points-card/points-card.wxss */
+
+.points-card {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-white);
+  overflow: hidden;
+}
+
+/* 积分余额区域 */
+.points-card-balance {
+  margin-bottom: var(--spacing-lg);
+}
+
+.points-card-balance-row {
+  margin-bottom: var(--spacing-md);
+}
+
+.points-card-balance-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.points-card-balance-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+.points-card-balance-number {
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+/* 进度条 */
+.points-card-progress {
+  margin-top: var(--spacing-md);
+}
+
+.points-card-progress-bar {
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.points-card-progress-fill {
+  height: 100%;
+  background-color: var(--color-text-white);
+  border-radius: 3px;
+  transition: width var(--duration-normal) var(--ease-out);
+}
+
+.points-card-progress-text {
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+/* 快捷操作区域 */
+.points-card-actions {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.points-card-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: var(--spacing-sm);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  margin: 0 var(--spacing-xs);
+}
+
+.points-card-action:active {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(0.95);
+}
+
+.points-card-action-icon {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.points-card-action-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.points-card-action-reward {
+  font-size: var(--font-size-xs);
+  opacity: 0.8;
+}

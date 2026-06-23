@@ -1,0 +1,389 @@
+/* styles/mixins.wxss - 通用样式混合（卡片/按钮/标签） */
+
+/* ========== 卡片样式 ========== */
+.card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--padding-card);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.card-flat {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  padding: var(--padding-card);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.card-bordered {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border-light);
+  padding: var(--padding-card);
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+}
+
+.card-hover {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.card-hover:active {
+  transform: scale(0.98);
+}
+
+/* ========== 按钮样式 ========== */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-button);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  border-radius: var(--radius-button);
+}
+
+.btn-primary:active {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-primary-light {
+  background-color: var(--color-primary-alpha-10);
+  color: var(--color-primary);
+  border-radius: var(--radius-button);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-button);
+}
+
+.btn-outline:active {
+  background-color: var(--color-primary-alpha-10);
+}
+
+.btn-secondary {
+  background-color: var(--color-tag-bg);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-button);
+}
+
+.btn-secondary:active {
+  background-color: var(--color-border-light);
+}
+
+.btn-vip {
+  background: linear-gradient(135deg, var(--color-vip-gold), #F7C948);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-button);
+  font-weight: var(--font-weight-bold);
+}
+
+.btn-vip:active {
+  opacity: 0.9;
+}
+
+.btn-success {
+  background-color: var(--color-success);
+  color: var(--color-text-white);
+  border-radius: var(--radius-button);
+}
+
+.btn-success:active {
+  opacity: 0.9;
+}
+
+.btn-disabled {
+  background-color: var(--color-border-light);
+  color: var(--color-text-placeholder);
+  border-radius: var(--radius-button);
+}
+
+.btn-disabled:active {
+  opacity: 1;
+  transform: none;
+}
+
+/* 按钮尺寸 */
+.btn-sm {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  height: 28px;
+  line-height: 28px;
+}
+
+.btn-md {
+  padding: var(--spacing-sm) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  height: 36px;
+  line-height: 36px;
+}
+
+.btn-lg {
+  padding: var(--spacing-md) var(--spacing-xxl);
+  font-size: var(--font-size-md);
+  height: 44px;
+  line-height: 44px;
+}
+
+.btn-xl {
+  padding: var(--spacing-lg) var(--spacing-xxxl);
+  font-size: var(--font-size-lg);
+  height: 48px;
+  line-height: 48px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ========== 标签样式 ========== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-tag);
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.tag-default {
+  background-color: var(--color-tag-bg);
+  color: var(--color-tag-text);
+}
+
+.tag-primary {
+  background-color: var(--color-tag-primary-bg);
+  color: var(--color-tag-primary-text);
+}
+
+.tag-vip {
+  background-color: var(--color-vip-gold-bg);
+  color: var(--color-vip-gold);
+  font-weight: var(--font-weight-medium);
+}
+
+.tag-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.tag-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.tag-error {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+}
+
+/* ========== 分割线 ========== */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-divider);
+  margin: var(--spacing-lg) 0;
+}
+
+.divider-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-placeholder);
+  font-size: var(--font-size-sm);
+  margin: var(--spacing-lg) 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-divider);
+}
+
+.divider-text::before {
+  margin-right: var(--spacing-md);
+}
+
+.divider-text::after {
+  margin-left: var(--spacing-md);
+}
+
+/* ========== 列表项 ========== */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-cell);
+  background-color: var(--color-card);
+  position: relative;
+}
+
+.list-item:active {
+  background-color: var(--color-border-light);
+}
+
+.list-item-border::after {
+  content: '';
+  position: absolute;
+  left: var(--spacing-lg);
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-divider);
+}
+
+/* ========== 头像 ========== */
+.avatar {
+  border-radius: var(--radius-avatar);
+  overflow: hidden;
+  background-color: var(--color-tag-bg);
+}
+
+.avatar-sm {
+  width: var(--size-avatar-sm);
+  height: var(--size-avatar-sm);
+}
+
+.avatar-md {
+  width: var(--size-avatar-md);
+  height: var(--size-avatar-md);
+}
+
+.avatar-lg {
+  width: var(--size-avatar-lg);
+  height: var(--size-avatar-lg);
+}
+
+.avatar-xl {
+  width: var(--size-avatar-xl);
+  height: var(--size-avatar-xl);
+}
+
+/* ========== 网格布局 ========== */
+.grid-2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-2 > .grid-item {
+  width: calc(50% - var(--spacing-sm));
+  margin: calc(var(--spacing-sm) / 2);
+}
+
+.grid-3 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid-3 > .grid-item {
+  width: calc(33.33% - var(--spacing-sm));
+  margin: calc(var(--spacing-sm) / 2);
+}
+
+/* ========== 区域标题 ========== */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.section-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.section-more {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-placeholder);
+}
+
+/* ========== 固定底部栏 ========== */
+.fixed-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-card);
+  padding: var(--spacing-md) var(--spacing-page);
+  padding-bottom: calc(var(--spacing-md) + env(safe-area-inset-bottom));
+  box-shadow: var(--shadow-tabbar);
+  z-index: var(--z-fixed);
+}
+
+/* ========== 横幅广告条 ========== */
+.banner-bar {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: var(--color-text-white);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+}
+
+/* ========== 顶部导航标签 ========== */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-card);
+  padding: 0 var(--spacing-page);
+  height: 44px;
+}
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-tab-active {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.nav-tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}

@@ -1,0 +1,49 @@
+sequenceDiagram
+    participant U as 用户
+    participant MP as 小程序(vip/pay页)
+    participant CF as 云函数
+    participant DB as 云数据库
+    participant WP as 微信支付API
+
+    U->>MP: 进入会员中心
+    MP->>CF: vip/getVipInfo({})
+    CF->>DB: 查询users.is_vip, vip_expire_at
+    DB-->>CF: 返回会员状态
+    CF-->>MP: {is_vip, vip_type, vip_expire_at, privileges}
+    MP-->>U: 展示权益对比+套餐选择
+
+    U->>MP: 选择套餐(如月卡¥18)
+    MP->>MP: 跳转支付页(/pages/pay/pay)
+
+    U->>MP: 确认支付
+    MP->>CF: pay/createOrder({order_type: "vip", order_detail: {vip_type: "month"}})
+    CF->>CF: 生成order_no(VIP_yyyyMMddHHmmss_random6)
+    CF->>DB: 新增vip_orders记录({pay_status: "pending"})
+    DB-->>CF: 订单创建成功
+    CF->>WP: 统一下单API(调用微信支付)
+    WP-->>CF: 返回prepay_id+支付签名参数
+    CF-->>MP: {order_no, pay_params: {timeStamp, nonceStr, package, signType, paySign}}
+
+    MP->>WP: wx.requestPayment(pay_params)
+    WP-->>U: 微信支付弹窗
+    U->>WP: 确认支付
+    
+    WP->>CF: pay/payCallback(支付结果回调)
+    CF->>CF: 验签+更新订单状态
+    CF->>DB: 更新vip_orders.pay_status="paid", transaction_id
+    CF->>DB: 更新users.is_vip=true, vip_type, vip_start_at, vip_expire_at
+    CF->>DB: 新增points_records({type: "vip_gift", amount: +50, description: "开通会员赠送"})
+    DB-->>CF: 全部更新成功
+    CF-->>CF: 返回成功确认
+
+    alt 用户端支付成功回调
+        WP-->>MP: 支付成功回调
+        MP->>CF: pay/getOrderStatus({order_no})
+        CF->>DB: 查询订单状态
+        DB-->>CF: {pay_status: "paid"}
+        CF-->>MP: 确认支付成功
+        MP-->>U: 展示会员开通成功页+权益解锁
+    else 支付失败
+        WP-->>MP: 支付失败回调
+        MP-->>U: 提示支付失败+重新支付按钮
+    end

@@ -1,0 +1,22 @@
+<!-- components/empty-state/empty-state.wxml - 空状态占位 -->
+<view class="empty-state">
+  <!-- 图标/图片 -->
+  <image
+    wx:if="{{iconImage}}"
+    src="{{iconImage}}"
+    mode="aspectFit"
+    class="empty-state-image"
+  />
+  <text wx:elif="{{iconEmoji}}" class="empty-state-emoji">{{iconEmoji}}</text>
+
+  <!-- 标题 -->
+  <text class="empty-state-title">{{title}}</text>
+
+  <!-- 描述文字 -->
+  <text class="empty-state-desc" wx:if="{{description}}">{{description}}</text>
+
+  <!-- 操作按钮 -->
+  <view class="empty-state-action" wx:if="{{actionText}}" bindtap="onActionTap">
+    <text class="btn {{actionType === 'primary' ? 'btn-primary' : 'btn-outline'}} btn-md">{{actionText}}</text>
+  </view>
+</view>

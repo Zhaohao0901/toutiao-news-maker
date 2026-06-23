@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "制作新闻",
+  "usingComponents": {
+    "step-progress": "/components/business/step-progress/step-progress",
+    "news-editor": "/components/business/news-editor/news-editor",
+    "canvas-preview": "/components/business/canvas-preview/canvas-preview",
+    "template-card": "/components/base/template-card/template-card",
+    "vip-badge": "/components/base/vip-badge/vip-badge",
+    "category-nav": "/components/base/category-nav/category-nav",
+    "pay-dialog": "/components/business/pay-dialog/pay-dialog"
+  }
+}

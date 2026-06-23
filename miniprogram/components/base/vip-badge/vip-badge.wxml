@@ -1,0 +1,5 @@
+<!--components/base/vip-badge/vip-badge.wxml - VIP角标-->
+<view class="vip-badge">
+  <text class="badge-icon">👑</text>
+  <text class="badge-text">VIP</text>
+</view>

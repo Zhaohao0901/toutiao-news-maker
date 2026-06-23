@@ -1,0 +1,36 @@
+<!-- components/news-card/news-card.wxml - 左图右文新闻卡片 -->
+<view class="news-card card-hover" bindtap="onCardTap">
+  <!-- 左侧图片 -->
+  <view class="news-card-image">
+    <image
+      src="{{item.cover_image || defaultCover}}"
+      mode="aspectFill"
+      class="news-card-img"
+      lazy-load="{{true}}"
+    />
+  </view>
+
+  <!-- 右侧内容 -->
+  <view class="news-card-content">
+    <!-- 标题 -->
+    <text class="news-card-title text-ellipsis-2">{{item.title}}</text>
+
+    <!-- 正文摘要 -->
+    <text class="news-card-summary text-ellipsis-2">{{item.body_text}}</text>
+
+    <!-- 底部信息栏 -->
+    <view class="news-card-footer flex-between">
+      <!-- 题材标签 -->
+      <view class="news-card-tags">
+        <text class="tag tag-primary">{{categoryLabel}}</text>
+        <text class="tag tag-default" wx:if="{{item.is_featured}}">热门</text>
+      </view>
+
+      <!-- 浏览数 -->
+      <text class="news-card-meta">{{viewCount}}浏览</text>
+    </view>
+  </view>
+
+  <!-- VIP角标 -->
+  <vip-badge wx:if="{{item.is_vip}}" />
+</view>

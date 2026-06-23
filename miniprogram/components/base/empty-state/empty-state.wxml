@@ -1,0 +1,13 @@
+<!--components/base/empty-state/empty-state.wxml - 空状态组件-->
+<view class="empty-state">
+  <view class="empty-icon">
+    <text wx:if="{{type === 'news'}}" class="icon-text">📰</text>
+    <text wx:if="{{type === 'search'}}" class="icon-text">🔍</text>
+    <text wx:if="{{type === 'template'}}" class="icon-text">🎨</text>
+    <text wx:if="{{type === 'points'}}" class="icon-text">💰</text>
+    <text wx:if="{{type === 'works'}}" class="icon-text">🎬</text>
+    <text wx:if="{{type === 'favorite'}}" class="icon-text">⭐</text>
+  </view>
+  <text class="empty-tip">{{tip || '暂无数据'}}</text>
+  <text wx:if="{{showAction}}" class="empty-action" bindtap="onActionTap">{{actionText || '去看看'}}</text>
+</view>

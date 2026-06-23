@@ -1,0 +1,32 @@
+/* components/base/category-nav/category-nav.wxss - 分类导航样式 */
+.category-nav {
+  white-space: nowrap;
+  padding: 16rpx 0;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  margin-right: 16rpx;
+  background-color: #F5F5F5;
+  border-radius: 36rpx;
+  font-size: 26rpx;
+  color: #666666;
+  transition: all 0.3s ease;
+}
+
+.nav-item.active {
+  background-color: #E8002D;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.nav-icon {
+  font-size: 28rpx;
+  margin-right: 6rpx;
+}
+
+.nav-label {
+  /* 标签文字 */
+}

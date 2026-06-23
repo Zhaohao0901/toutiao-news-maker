@@ -1,0 +1,228 @@
+/* pages/profile/profile.wxss - 个人中心样式 */
+.page-container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 120rpx;
+}
+
+/* 用户信息卡 */
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #E8002D 0%, #FF4D6A 100%);
+}
+
+.avatar-area {
+  margin-right: 24rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.5);
+}
+
+.user-info {
+  flex:1;
+}
+
+.name-area {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.user-id {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.edit-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+}
+
+.edit-icon {
+  font-size: 28rpx;
+  color: #FFFFFF;
+}
+
+/* 快捷入口 */
+.quick-entries {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30rpx 32rpx;
+  background-color: #FFFFFF;
+  margin: -20rpx 24rpx 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.entry-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex:1;
+}
+
+.entry-value {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  margin-bottom: 8rpx;
+}
+
+.entry-label {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.entry-divider {
+  width: 2rpx;
+  height: 60rpx;
+  background-color: #EEEEEE;
+}
+
+/* 通用区块 */
+.section {
+  margin: 20rpx 24rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.section-more {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+/* 作品预览 */
+.works-preview {
+  white-space: nowrap;
+  margin: 0 -24rpx;
+  padding: 0 24rpx;
+}
+
+.work-item {
+  display: inline-flex;
+  flex-direction: column;
+  width: 200rpx;
+  margin-right: 20rpx;
+}
+
+.work-thumb {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+  margin-bottom: 8rpx;
+}
+
+.work-title {
+  font-size: 22rpx;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 作品展开网格 */
+.works-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10rpx;
+}
+
+.work-grid-item {
+  display: flex;
+  flex-direction: column;
+  width: calc(33.333% - 20rpx);
+  margin: 0 10rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.work-grid-item .work-thumb {
+  width: 100%;
+  height: 200rpx;
+}
+
+.work-grid-item .work-title {
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+/* 收藏列表 */
+.favorites-list {
+  /* 使用news-card样式 */
+}
+
+/* 设置区 */
+.settings-section {
+  padding: 0;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+}
+
+.settings-label {
+  flex:1;
+  font-size: 28rpx;
+  color: #1A1A1A;
+}
+
+.settings-arrow {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+
+/* 注销账号 */
+.delete-account {
+  text-align: center;
+  padding: 40rpx;
+}
+
+.delete-text {
+  font-size: 26rpx;
+  color: #999999;
+  text-decoration: underline;
+}

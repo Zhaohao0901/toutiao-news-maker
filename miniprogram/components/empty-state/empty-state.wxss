@@ -1,0 +1,42 @@
+/* components/empty-state/empty-state.wxss */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxxl) var(--spacing-xl);
+  min-height: 400rpx;
+}
+
+.empty-state-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: var(--spacing-xl);
+}
+
+.empty-state-emoji {
+  font-size: 48px;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1;
+}
+
+.empty-state-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-placeholder);
+  text-align: center;
+  line-height: var(--line-height-normal);
+  max-width: 500rpx;
+  margin-bottom: var(--spacing-xl);
+}
+
+.empty-state-action {
+  margin-top: var(--spacing-sm);
+}

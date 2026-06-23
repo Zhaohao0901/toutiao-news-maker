@@ -1,0 +1,194 @@
+/* pages/make/make.wxss - 新闻制作页面样式 */
+.page-container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 120rpx;
+}
+
+/* 步骤内容区 */
+.step-content {
+  padding: 20rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  margin-bottom: 24rpx;
+}
+
+/* Step 1: 选择模板 */
+.category-scroll {
+  white-space: nowrap;
+  margin-bottom: 24rpx;
+}
+
+.category-list {
+  display: inline-flex;
+  gap: 16rpx;
+  padding: 8rpx 0;
+}
+
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  background-color: #FFFFFF;
+  border-radius: 36rpx;
+  font-size: 26rpx;
+  color: #666666;
+  border: 2rpx solid #EEEEEE;
+}
+
+.category-tag.active {
+  background-color: #E8002D;
+  color: #FFFFFF;
+  border-color: #E8002D;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+/* Step 2: 编辑内容 */
+.step-2 {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+/* Step 3: 预览 */
+.step-3 {
+  display: flex;
+  justify-content: center;
+}
+
+/* Step 4: 生成 */
+.points-check,
+.balance-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.points-label,
+.balance-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.points-cost {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #E8002D;
+}
+
+.balance-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.generate-btn {
+  width: 100%;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E8002D;
+  color: #FFFFFF;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 48rpx;
+  border: none;
+  margin-top: 30rpx;
+}
+
+.generate-btn.disabled {
+  background-color: #CCCCCC;
+}
+
+.generate-btn[disabled] {
+  background-color: #CCCCCC;
+}
+
+/* 生成结果 */
+.result-area {
+  margin-top: 40rpx;
+  text-align: center;
+}
+
+.result-image {
+  width: 100%;
+  border-radius: 12rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+.result-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+
+.action-btn {
+  flex:1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  border: none;
+}
+
+.save-btn {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.share-btn {
+  background-color: #07C160;
+  color: #FFFFFF;
+}
+
+/* 底部操作按钮 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 32rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.05);
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.btn-prev,
+.btn-next {
+  flex:1;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+  border: none;
+}
+
+.btn-prev {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.btn-next {
+  background-color: #E8002D;
+  color: #FFFFFF;
+}

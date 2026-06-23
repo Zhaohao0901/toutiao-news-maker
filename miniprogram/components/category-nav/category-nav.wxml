@@ -1,0 +1,37 @@
+<!-- components/category-nav/category-nav.wxml - 题材分类导航 -->
+<view class="category-nav">
+  <scroll-view
+    class="category-nav-scroll"
+    scroll-x="{{true}}"
+    enhanced="{{true}}"
+    show-scrollbar="{{false}}"
+    scroll-into-view="{{scrollIntoId}}"
+    scroll-with-animation="{{true}}"
+  >
+    <view class="category-nav-list">
+      <!-- 全部选项 -->
+      <view
+        class="category-nav-item {{activeCategory === 'all' ? 'category-nav-item-active' : ''}}"
+        id="nav-all"
+        bindtap="onCategoryTap"
+        data-category="all"
+      >
+        <text class="category-nav-icon">🔥</text>
+        <text class="category-nav-label">全部</text>
+      </view>
+
+      <!-- 各题材选项 -->
+      <view
+        wx:for="{{categories}}"
+        wx:key="key"
+        class="category-nav-item {{activeCategory === item.key ? 'category-nav-item-active' : ''}}"
+        id="nav-{{item.key}}"
+        bindtap="onCategoryTap"
+        data-category="{{item.key}}"
+      >
+        <text class="category-nav-icon">{{item.icon}}</text>
+        <text class="category-nav-label">{{item.label}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

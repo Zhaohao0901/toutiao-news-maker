@@ -1,0 +1,71 @@
+/* components/news-card/news-card.wxss */
+
+.news-card {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 左侧图片区域 */
+.news-card-image {
+  width: 200rpx;
+  height: 150rpx;
+  flex-shrink: 0;
+  margin-right: var(--spacing-md);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-tag-bg);
+}
+
+.news-card-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 右侧内容区域 */
+.news-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.news-card-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-xs);
+}
+
+.news-card-summary {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-sm);
+  flex: 1;
+}
+
+/* 底部信息栏 */
+.news-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.news-card-tags {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.news-card-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-placeholder);
+}

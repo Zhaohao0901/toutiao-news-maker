@@ -1,0 +1,71 @@
+/* components/template-card/template-card.wxss */
+
+.template-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-md);
+}
+
+/* 封面区域 */
+.template-card-cover {
+  width: 100%;
+  height: 320rpx;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-tag-bg);
+}
+
+.template-card-img {
+  width: 100%;
+  height: 100%;
+}
+
+.template-card-vip-mark {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+}
+
+.template-card-use-count {
+  position: absolute;
+  bottom: var(--spacing-sm);
+  left: var(--spacing-sm);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.template-card-use-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-white);
+}
+
+/* 信息区域 */
+.template-card-info {
+  padding: var(--spacing-md);
+}
+
+.template-card-name {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.template-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-sm);
+}
+
+.template-card-footer {
+  margin-top: var(--spacing-sm);
+}
+
+.template-card-cost {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-placeholder);
+}

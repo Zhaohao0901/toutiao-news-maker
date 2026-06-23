@@ -1,0 +1,114 @@
+<!--pages/make/make.wxml - 新闻制作页面-->
+<view class="page-container">
+  <!-- 步骤进度条 -->
+  <step-progress currentStep="{{currentStep}}" bind:stepchange="onStepChange" />
+
+  <view class="step-content">
+    <!-- Step 1: 选择模板 -->
+    <view wx:if="{{currentStep === 0}}" class="step-1">
+      <view class="section-title">选择模板</view>
+      
+      <!-- 题材分类 -->
+      <scroll-view class="category-scroll" scroll-x>
+        <view class="category-list">
+          <view wx:for="{{categories}}" 
+                wx:key="key"
+                class="category-tag {{selectedCategory === item.key ? 'active' : ''}}"
+                data-category="{{item.key}}"
+                bindtap="onCategorySelect">
+            <text>{{item.icon}} {{item.label}}</text>
+          </view>
+        </view>
+      </scroll-view>
+
+      <!-- 模板网格 -->
+      <view class="template-grid">
+        <template-card wx:for="{{templates}}" 
+                       wx:key="id"
+                       template="{{item}}"
+                       bind:tap="onTemplateSelect" />
+      </view>
+
+      <!-- 空状态 -->
+      <empty-state wx:if="{{templates.length === 0 && !isLoadingTemplates}}" 
+                    type="template"
+                    tip="暂无可用模板" />
+    </view>
+
+    <!-- Step 2: 编辑内容 -->
+    <view wx:if="{{currentStep === 1}}" class="step-2">
+      <view class="section-title">编辑内容</view>
+      
+      <news-editor title="{{editData.title}}"
+                   bodyText="{{editData.bodyText}}"
+                   coverImage="{{editData.coverImage}}"
+                   category="{{selectedCategory}}"
+                   bind:titlechange="onTitleChange"
+                   bind:bodychange="onBodyChange"
+                   bind:imagechange="onImageChange"
+                   bind:airewrite="onAIRewrite" />
+    </view>
+
+    <!-- Step 3: 实时预览 -->
+    <view wx:if="{{currentStep === 2}}" class="step-3">
+      <canvas-preview layoutConfig="{{layoutConfig}}"
+                     editData="{{editData}}" 
+                     bind:generate="onGenerateFull" />
+    </view>
+
+    <!-- Step 4: 生成分享 -->
+    <view wx:if="{{currentStep === 3}}" class="step-4">
+      <view class="section-title">生成分享图</view>
+      
+      <view class="points-check">
+        <text class="points-label">本次消耗积分</text>
+        <text class="points-cost">{{pointsCost}}</text>
+      </view>
+
+      <view class="balance-info">
+        <text class="balance-label">当前余额</text>
+        <text class="balance-value">{{pointsBalance}} 积分</text>
+      </view>
+
+      <!-- 支付确认弹窗 -->
+      <pay-dialog visible="{{showPayDialog}}"
+                  pointsCost="{{pointsCost}}"
+                  pointsBalance="{{pointsBalance}}"
+                  bind:confirm="onPayConfirm"
+                  bind:cancel="onPayCancel" />
+
+      <button class="generate-btn {{pointsBalance < pointsCost ? 'disabled' : ''}}"
+              bindtap="onGenerateTap"
+              disabled="{{isGenerating}}">
+        <text wx:if="{{!isGenerating}}">生成分享图（消耗{{pointsCost}}积分）</text>
+        <text wx:else>生成中...</text>
+      </button>
+
+      <!-- 生成结果 -->
+      <view wx:if="{{generatedImageUrl}}" class="result-area">
+        <image class="result-image" 
+               src="{{generatedImageUrl}}" 
+               mode="widthFix"
+               bindtap="onPreviewImage" />
+        <view class="result-actions">
+          <button class="action-btn save-btn" bindtap="onSaveImage">保存到相册</button>
+          <button class="action-btn share-btn" bindtap="onShareImage">分享给好友</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部操作按钮 -->
+  <view class="bottom-actions">
+    <button wx:if="{{currentStep > 0}}" 
+            class="btn-prev"
+            bindtap="onPrevStep">
+      上一步
+    </button>
+    <button wx:if="{{currentStep < 3}}" 
+            class="btn-next"
+            bindtap="onNextStep">
+      {{currentStep === 2 ? '生成分享' : '下一步'}}
+    </button>
+  </view>
+</view>

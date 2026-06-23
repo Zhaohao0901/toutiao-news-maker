@@ -1,0 +1,18 @@
+<!--components/business/ad-reward-btn/ad-reward-btn.wxml - 广告激励按钮组件-->
+<view class="ad-reward-container">
+  <button class="ad-btn {{remainingTimes <= 0 ? 'disabled' : ''}}" 
+          bindtap="onAdTap"
+          disabled="{{remainingTimes <= 0}}">
+    <view class="btn-content">
+      <text class="btn-icon">🎁</text>
+      <view class="btn-text-area">
+        <text class="btn-title">观看广告赚积分</text>
+        <text class="btn-tip">今日剩余 {{remainingTimes}}/{{maxTimes}} 次</text>
+      </view>
+      <view class="btn-reward">
+        <text class="reward-points">+{{rewardPoints}}</text>
+        <text class="reward-unit">积分</text>
+      </view>
+    </view>
+  </button>
+</view>

@@ -1,0 +1,66 @@
+<!--pages/pay/pay.wxml - 支付页面-->
+<view class="page-container">
+  <!-- 订单详情 -->
+  <view class="order-section">
+    <view class="section-title">订单详情</view>
+    
+    <view class="order-card">
+      <!-- 积分购买 -->
+      <block wx:if="{{payType === 'points'}}">
+        <text class="order-name">{{packageInfo.name}}</text>
+        <text class="order-desc">{{packageInfo.points}}积分</text>
+      </block>
+
+      <!-- VIP购买 -->
+      <block wx:if="{{payType === 'vip'}}">
+        <text class="order-name">{{packageInfo.name}}</text>
+        <text class="order-desc">{{packageInfo.durationDays}}天 VIP会员</text>
+      </block>
+
+      <view class="order-price-area">
+        <text class="price-label">支付金额</text>
+        <text class="price-value">¥{{price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支付方式 -->
+  <view class="payment-section">
+    <view class="section-title">支付方式</view>
+    
+    <view class="payment-methods">
+      <view class="method-item {{selectedMethod === 'wechat' ? 'selected' : ''}}"
+            data-method="wechat"
+            bindtap="onMethodSelect">
+        <text class="method-icon">💳</text>
+        <text class="method-name">微信支付</text>
+        <view class="method-check" wx:if="{{selectedMethod === 'wechat'}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 支付按钮 -->
+  <view class="bottom-action">
+    <button class="pay-btn" 
+            bindtap="onPayTap"
+            disabled="{{isPaying}}">
+      <text wx:if="{{!isPaying}}">微信支付 ¥{{price}}</text>
+      <text wx:else>支付处理中...</text>
+    </button>
+  </view>
+
+  <!-- 支付结果弹窗 -->
+  <view wx:if="{{showResult}}" class="result-modal">
+    <view class="result-content">
+      <text wx:if="{{paySuccess}}" class="result-icon success">✓</text>
+      <text wx:else class="result-icon fail">✗</text>
+      
+      <text class="result-title">{{paySuccess ? '支付成功' : '支付失败'}}</text>
+      <text class="result-desc">{{paySuccess ? successDesc : failDesc}}</text>
+
+      <button class="result-btn" bindtap="onResultConfirm">
+        {{paySuccess ? '完成' : '重新支付'}}
+      </button>
+    </view>
+  </view>
+</view>

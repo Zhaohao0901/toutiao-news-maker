@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "积分中心",
+  "usingComponents": {
+    "points-card": "/components/base/points-card/points-card",
+    "sign-in-card": "/components/business/sign-in-card/sign-in-card",
+    "ad-reward-btn": "/components/business/ad-reward-btn/ad-reward-btn",
+    "vip-badge": "/components/base/vip-badge/vip-badge",
+    "empty-state": "/components/base/empty-state/empty-state"
+  }
+}

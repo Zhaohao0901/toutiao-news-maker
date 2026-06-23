@@ -1,0 +1,23 @@
+<!--components/base/news-card/news-card.wxml - 左图右文新闻卡片-->
+<view class="news-card" bindtap="onCardTap">
+  <!-- 封面图 -->
+  <image class="card-cover" 
+         src="{{item.coverUrl || item.cover_image || defaultCover}}" 
+         mode="aspectFill" 
+         lazy-load />
+
+  <!-- 内容区 -->
+  <view class="card-content">
+    <!-- 标题 -->
+    <text class="card-title">{{item.title || '暂无标题'}}</text>
+
+    <!-- 底部信息 -->
+    <view class="card-meta">
+      <view class="meta-left">
+        <text class="category-tag">{{categoryLabel}}</text>
+        <text class="view-count">{{viewCount}}阅读</text>
+      </view>
+      <text class="time-text">{{item.timeLabel || ''}}</text>
+    </view>
+  </view>
+</view>

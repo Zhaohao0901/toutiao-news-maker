@@ -1,0 +1,62 @@
+<!--components/business/news-editor/news-editor.wxml - 新闻编辑器组件-->
+<view class="news-editor">
+  <!-- 标题输入区 -->
+  <view class="editor-section">
+    <view class="section-header">
+      <text class="section-title">标题</text>
+      <text class="char-count {{titleLength > 50 ? 'over-limit' : ''}}">{{titleLength}}/50</text>
+    </view>
+    <input class="title-input" 
+           placeholder="请输入新闻标题" 
+           placeholder-class="placeholder"
+           maxlength="50"
+           value="{{title}}"
+           bindinput="onTitleInput" />
+  </view>
+
+  <!-- 正文编辑区 -->
+  <view class="editor-section">
+    <view class="section-header">
+      <text class="section-title">正文</text>
+      <text class="char-count">{{bodyLength}}字</text>
+    </view>
+    <textarea class="body-textarea" 
+              placeholder="请输入新闻正文内容" 
+              placeholder-class="placeholder"
+              value="{{bodyText}}"
+              bindinput="onBodyInput"
+              auto-height
+              maxlength="-1" />
+  </view>
+
+  <!-- 配图选择区 -->
+  <view class="editor-section">
+    <view class="section-header">
+      <text class="section-title">封面图</text>
+      <text class="section-tip">建议尺寸 750x500</text>
+    </view>
+    <view class="image-upload-area" bindtap="onChooseImage">
+      <block wx:if="{{coverImage}}">
+        <image class="cover-preview" src="{{coverImage}}" mode="aspectFill" />
+        <view class="image-overlay">
+          <text class="change-text">更换图片</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="upload-placeholder">
+          <text class="upload-icon">+</text>
+          <text class="upload-text">选择封面图</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- AI改写按钮 -->
+  <view class="editor-section">
+    <button class="ai-rewrite-btn" bindtap="onAIRewrite" disabled="{{isRewriting}}">
+      <text wx:if="{{!isRewriting}}">✨ AI智能改写</text>
+      <text wx:else>改写中...</text>
+      <text class="cost-tip">消耗5积分</text>
+    </button>
+  </view>
+</view>

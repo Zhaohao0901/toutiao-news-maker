@@ -1,0 +1,24 @@
+<!--components/business/canvas-preview/canvas-preview.wxml - Canvas预览组件-->
+<view class="canvas-preview">
+  <view class="preview-header">
+    <text class="preview-title">实时预览</text>
+    <text class="preview-tip">效果仅供参考</text>
+  </view>
+  
+  <view class="canvas-container">
+    <canvas canvas-id="previewCanvas" 
+            id="previewCanvas"
+            class="preview-canvas"
+            style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;" />
+    
+    <!-- 加载遮罩 -->
+    <view wx:if="{{isRendering}}" class="render-loading">
+      <text class="loading-text">渲染中...</text>
+    </view>
+  </view>
+
+  <view class="preview-actions">
+    <button class="action-btn refresh-btn" bindtap="onRefresh">刷新预览</button>
+    <button class="action-btn full-btn" bindtap="onGenerateFull">生成完整图</button>
+  </view>
+</view>

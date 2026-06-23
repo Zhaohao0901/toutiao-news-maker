@@ -1,0 +1,23 @@
+<!--components/base/points-card/points-card.wxml - 积分余额卡片-->
+<view class="points-card">
+  <view class="card-bg">
+    <view class="points-header">
+      <text class="points-label">积分余额</text>
+      <vip-badge wx:if="{{showVipBadge}}" />
+    </view>
+
+    <view class="points-value-area">
+      <text class="points-number">{{points}}</text>
+      <text class="points-unit">积分</text>
+    </view>
+
+    <view class="points-actions">
+      <button class="action-btn sign-btn" bindtap="onSignIn">
+        签到+3
+      </button>
+      <button class="action-btn recharge-btn" bindtap="onRecharge">
+        充值
+      </button>
+    </view>
+  </view>
+</view>

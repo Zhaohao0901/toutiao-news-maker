@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "新闻工坊",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "category-nav": "/components/base/category-nav/category-nav",
+    "news-card": "/components/base/news-card/news-card",
+    "empty-state": "/components/base/empty-state/empty-state"
+  }
+}

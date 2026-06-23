@@ -1,0 +1,164 @@
+classDiagram
+    class User {
+        +String _id
+        +String openid
+        +String unionid
+        +String nickname
+        +String avatar_url
+        +Number points_balance
+        +Boolean is_vip
+        +String vip_type
+        +Date vip_expire_at
+        +Date vip_start_at
+        +Number total_works_count
+        +Number total_points_earned
+        +Number total_points_consumed
+        +String last_sign_date
+        +Number continuous_sign_days
+        +String inviter_openid
+        +Date created_at
+        +Date updated_at
+        +String status
+        +signIn()
+        +checkVip()
+        +updateProfile()
+    }
+
+    class Content {
+        +String _id
+        +String category
+        +String title
+        +String body_text
+        +String cover_image
+        +String source
+        +Number sort_weight
+        +Boolean is_featured
+        +Number view_count
+        +Number make_count
+        +Number collect_count
+        +String status
+        +Date created_at
+        +Date updated_at
+        +String tags
+        +getDetail()
+        +incrementCount()
+    }
+
+    class Template {
+        +String _id
+        +String category
+        +String name
+        +String description
+        +String preview_image
+        +String background_image
+        +Object layout_config
+        +Boolean is_vip
+        +Number sort_weight
+        +Number use_count
+        +String status
+        +Date created_at
+        +Date updated_at
+        +renderCanvas()
+        +getConfig()
+    }
+
+    class Work {
+        +String _id
+        +String openid
+        +String template_id
+        +String category
+        +String title
+        +String body_text
+        +String image_url
+        +String cover_image
+        +Object edit_data
+        +Boolean has_watermark
+        +String status
+        +Date created_at
+        +Date updated_at
+        +delete()
+        +reEdit()
+        +share()
+    }
+
+    class PointsRecord {
+        +String _id
+        +String openid
+        +String type
+        +Number amount
+        +Number balance_after
+        +String description
+        +String related_id
+        +Date created_at
+        +createRecord()
+    }
+
+    class VipOrder {
+        +String _id
+        +String openid
+        +String order_no
+        +String vip_type
+        +Number price
+        +Number duration_days
+        +String pay_status
+        +String transaction_id
+        +Date start_at
+        +Date expire_at
+        +Date created_at
+        +Date updated_at
+        +confirmPay()
+    }
+
+    class PointsOrder {
+        +String _id
+        +String openid
+        +String order_no
+        +String package_type
+        +Number points_amount
+        +Number price
+        +String pay_status
+        +String transaction_id
+        +Date created_at
+        +Date updated_at
+        +confirmPay()
+    }
+
+    class Banner {
+        +String _id
+        +String title
+        +String image_url
+        +String link_type
+        +String link_target
+        +Number sort_weight
+        +Boolean is_active
+        +Date start_at
+        +Date end_at
+        +Date created_at
+    }
+
+    class Favorite {
+        +String _id
+        +String openid
+        +String target_type
+        +String target_id
+        +Date created_at
+        +toggle()
+    }
+
+    class SignRecord {
+        +String _id
+        +String openid
+        +Date sign_date
+        +Number points_earned
+        +Number continuous_days
+        +Date created_at
+    }
+
+    User "1" --> "*" Work : creates
+    User "1" --> "*" PointsRecord : has
+    User "1" --> "*" Favorite : collects
+    User "1" --> "*" SignRecord : signs
+    User "1" --> "0..1" VipOrder : subscribes
+    User "1" --> "*" PointsOrder : purchases
+    Content "1" --> "*" Template : hasTemplates
+    Template "1" --> "*" Work : usedIn

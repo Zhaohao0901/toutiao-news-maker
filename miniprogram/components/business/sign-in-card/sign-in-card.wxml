@@ -1,0 +1,28 @@
+<!--components/business/sign-in-card/sign-in-card.wxml - 签到打卡组件-->
+<view class="sign-in-card">
+  <view class="card-header">
+    <text class="card-title">每日签到</text>
+    <text class="consecutive-days">已连续签到 {{consecutiveDays}} 天</text>
+  </view>
+
+  <!-- 7天签到进度 -->
+  <view class="week-progress">
+    <view wx:for="{{weekDays}}" 
+          wx:key="day"
+          class="day-item {{item.signed ? 'signed' : ''}} {{item.isToday ? 'is-today' : ''}}">
+      <view class="day-circle">
+        <text wx:if="{{item.signed}}" class="check-icon">✓</text>
+        <text wx:else class="day-text">{{item.day}}</text>
+      </view>
+      <text class="day-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 签到按钮 -->
+  <button class="sign-btn {{signedToday ? 'signed' : ''}}" 
+          bindtap="onSignIn"
+          disabled="{{signedToday}}">
+    <text wx:if="{{!signedToday}}">立即签到 +{{rewardPoints}}积分</text>
+    <text wx:else>今日已签到 ✓</text>
+  </button>
+</view>

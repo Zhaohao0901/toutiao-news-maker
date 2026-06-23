@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "VIP会员",
+  "navigationBarBackgroundColor": "#FAAD14",
+  "usingComponents": {
+    "vip-badge": "/components/base/vip-badge/vip-badge"
+  }
+}

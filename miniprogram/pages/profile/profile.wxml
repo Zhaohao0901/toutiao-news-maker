@@ -1,0 +1,116 @@
+<!--pages/profile/profile.wxml - 个人中心页面-->
+<view class="page-container">
+  <!-- 用户信息区 -->
+  <view class="user-card">
+    <view class="avatar-area">
+      <image class="avatar" 
+             src="{{userInfo.avatarUrl || '/assets/images/default-avatar.png'}}" 
+             mode="aspectFill" />
+    </view>
+    <view class="user-info">
+      <view class="name-area">
+        <text class="nickname">{{userInfo.nickName || '未登录'}}</text>
+        <vip-badge wx:if="{{isVip}}" />
+      </view>
+      <text class="user-id">ID: {{userId || '---'}}</text>
+    </view>
+    <view class="edit-btn" bindtap="onEditProfile">
+      <text class="edit-icon">✎</text>
+    </view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-entries">
+    <view class="entry-item" bindtap="onPointsTap">
+      <text class="entry-value">{{pointsBalance}}</text>
+      <text class="entry-label">积分</text>
+    </view>
+    <view class="entry-divider"></view>
+    <view class="entry-item" bindtap="onVipTap">
+      <text class="entry-value">{{isVip ? 'VIP' : '普通'}}</text>
+      <text class="entry-label">会员状态</text>
+    </view>
+    <view class="entry-divider"></view>
+    <view class="entry-item" bindtap="onWorksTap">
+      <text class="entry-value">{{worksCount}}</text>
+      <text class="entry-label">作品</text>
+    </view>
+  </view>
+
+  <!-- 我的作品（页面内展开/收起，不再跳转独立作品页） -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">我的作品</text>
+      <text class="section-more" bindtap="onWorksTap">{{worksExpanded ? '收起 ‹' : '查看全部 ›'}}</text>
+    </view>
+    <!-- 收起态：横向滚动预览 -->
+    <scroll-view class="works-preview" scroll-x wx:if="{{!worksExpanded && recentWorks.length > 0}}">
+      <view wx:for="{{recentWorks}}" 
+            wx:key="id"
+            class="work-item"
+            data-work="{{item}}"
+            bindtap="onWorkTap">
+        <image class="work-thumb" 
+               src="{{item.thumbnailUrl || item.imageUrl}}" 
+               mode="aspectFill" />
+        <text class="work-title">{{item.title}}</text>
+      </view>
+    </scroll-view>
+    <!-- 展开态：纵向网格全量展示 -->
+    <view class="works-grid" wx:if="{{worksExpanded && recentWorks.length > 0}}">
+      <view wx:for="{{recentWorks}}" 
+            wx:key="id"
+            class="work-grid-item"
+            data-work="{{item}}"
+            bindtap="onWorkTap">
+        <image class="work-thumb" 
+               src="{{item.thumbnailUrl || item.imageUrl}}" 
+               mode="aspectFill" />
+        <text class="work-title">{{item.title}}</text>
+      </view>
+    </view>
+    <empty-state wx:if="{{recentWorks.length === 0}}" 
+                  type="works"
+                  tip="暂无作品，快去制作吧" />
+  </view>
+
+  <!-- 我的收藏 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">我的收藏</text>
+      <text class="section-more" bindtap="onFavoritesTap">查看全部 ›</text>
+    </view>
+    <view class="favorites-list">
+      <block wx:for="{{favorites}}" wx:key="id">
+        <news-card item="{{item}}" bind:tap="onFavoriteTap" />
+      </block>
+      <empty-state wx:if="{{favorites.length === 0}}" 
+                    type="favorite"
+                    tip="暂无收藏" />
+    </view>
+  </view>
+
+  <!-- 设置区 -->
+  <view class="section settings-section">
+    <view class="settings-item" bindtap="onCustomerService">
+      <text class="settings-icon">📞</text>
+      <text class="settings-label">联系客服</text>
+      <text class="settings-arrow">›</text>
+    </view>
+    <view class="settings-item" bindtap="onPrivacyTap">
+      <text class="settings-icon">🔒</text>
+      <text class="settings-label">隐私政策</text>
+      <text class="settings-arrow">›</text>
+    </view>
+    <view class="settings-item" bindtap="onLogoutTap">
+      <text class="settings-icon">🚪</text>
+      <text class="settings-label">退出登录</text>
+      <text class="settings-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 注销账号 -->
+  <view class="delete-account" bindtap="onDeleteAccount">
+    <text class="delete-text">注销账号</text>
+  </view>
+</view>

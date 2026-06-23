@@ -1,0 +1,63 @@
+<!--pages/points/points.wxml - 积分中心页面-->
+<view class="page-container">
+  <!-- 积分余额卡片 -->
+  <points-card points="{{pointsBalance}}" />
+
+  <!-- 签到打卡区 -->
+  <sign-in-card consecutiveDays="{{consecutiveDays}}"
+                signedToday="{{signedToday}}"
+                bind:signin="onSignInSuccess" />
+
+  <!-- 广告激励区 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">赚积分</text>
+    </view>
+    <ad-reward-btn watchedTimes="{{adWatchedToday}}"
+                   bind:adreward="onAdRewardSuccess" />
+  </view>
+
+  <!-- 积分购买入口 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">购买积分</text>
+    </view>
+    <view class="points-packages">
+      <view wx:for="{{pointsPackages}}" 
+            wx:key="id"
+            class="package-card {{item.isRecommended ? 'recommended' : ''}}"
+            data-package="{{item}}"
+            bindtap="onPackageSelect">
+        <view wx:if="{{item.isRecommended}}" class="recommend-badge">推荐</view>
+        <text class="package-name">{{item.name}}</text>
+        <text class="package-points">{{item.points}}积分</text>
+        <text class="package-price">{{item.priceYuan}}</text>
+        <text wx:if="{{item.originalPrice}}" class="package-original">原价{{item.originalPriceYuan}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分流水明细 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">积分明细</text>
+    </view>
+    <view class="points-history">
+      <block wx:for="{{pointsHistory}}" wx:key="id">
+        <view class="history-item">
+          <view class="history-left">
+            <text class="history-type">{{item.typeLabel}}</text>
+            <text class="history-time">{{item.timeLabel}}</text>
+          </view>
+          <text class="history-amount {{item.amount > 0 ? 'positive' : 'negative'}}">
+            {{item.amount > 0 ? '+' : ''}}{{item.amount}}
+          </text>
+        </view>
+      </block>
+
+      <empty-state wx:if="{{pointsHistory.length === 0 && !isLoadingHistory}}" 
+                    type="points"
+                    tip="暂无积分记录" />
+    </view>
+  </view>
+</view>

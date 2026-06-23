@@ -1,0 +1,118 @@
+/* components/business/pay-dialog/pay-dialog.wxss - 支付确认弹窗样式 */
+.pay-dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-dialog-container {
+  width: 600rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 32rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+
+.dialog-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.close-btn {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #999999;
+}
+
+.dialog-body {
+  padding: 40rpx 32rpx;
+}
+
+.cost-info,
+.balance-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.cost-label,
+.balance-label {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.cost-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #E8002D;
+}
+
+.balance-value {
+  font-size: 32rpx;
+  color: #1A1A1A;
+  font-weight: bold;
+}
+
+.insufficient-tip {
+  margin-top: 20rpx;
+  padding: 16rpx 20rpx;
+  background-color: #FFF3F3;
+  border-radius: 8rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #E8002D;
+}
+
+.dialog-footer {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 32rpx 32rpx;
+}
+
+.btn-cancel,
+.btn-confirm {
+  flex: 1;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  border-radius: 44rpx;
+  border: none;
+}
+
+.btn-cancel {
+  background-color: #F5F5F5;
+  color: #666666;
+}
+
+.btn-confirm {
+  background-color: #E8002D;
+  color: #FFFFFF;
+}
+
+.btn-confirm.disabled {
+  background-color: #CCCCCC;
+}

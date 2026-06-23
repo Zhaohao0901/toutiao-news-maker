@@ -1,0 +1,4 @@
+<!-- components/vip-badge/vip-badge.wxml - VIP角标组件 -->
+<view class="vip-badge {{animate ? 'vip-badge-anim' : ''}}">
+  <text class="vip-badge-text">VIP</text>
+</view>

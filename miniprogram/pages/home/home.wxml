@@ -1,0 +1,72 @@
+<!--pages/home/home.wxml - 首页-->
+<view class="page-container">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" 
+             placeholder="搜索新闻内容" 
+             placeholder-class="placeholder"
+             value="{{searchKeyword}}"
+             bindinput="onSearchInput"
+             bindconfirm="onSearchConfirm" />
+      <text wx:if="{{searchKeyword}}" class="clear-btn" bindtap="onClearSearch">×</text>
+    </view>
+    <view class="notification-btn" bindtap="onNotificationTap">
+      <text class="notif-icon">🔔</text>
+      <view wx:if="{{hasNewNotification}}" class="notif-dot"></view>
+    </view>
+  </view>
+
+  <!-- Banner轮播 -->
+  <view class="banner-section">
+    <swiper class="banner-swiper" 
+            indicator-dots="{{true}}"
+            indicator-color="rgba(255,255,255,0.5)"
+            indicator-active-color="#FFFFFF"
+            autoplay="{{true}}"
+            interval="{{3000}}"
+            circular="{{true}}">
+      <swiper-item wx:for="{{banners}}" wx:key="id">
+        <image class="banner-image" 
+               src="{{item.imageUrl}}" 
+               mode="aspectFill"
+               bindtap="onBannerTap"
+               data-url="{{item.linkUrl}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 题材分类导航 -->
+  <view class="category-section">
+    <category-nav activeCategory="{{activeCategory}}" 
+                  bind:change="onCategoryChange" />
+  </view>
+
+  <!-- 新闻流列表 -->
+  <view class="news-list">
+    <!-- 搜索结果提示 -->
+    <view wx:if="{{isSearching}}" class="search-result-tip">
+      <text>搜索"{{searchKeyword}}"的结果 ({{newsList.length}}条)</text>
+    </view>
+
+    <!-- 新闻卡片列表 -->
+    <block wx:for="{{newsList}}" wx:key="id">
+      <news-card item="{{item}}" bind:tap="onNewsCardTap" />
+    </block>
+
+    <!-- 空状态 -->
+    <empty-state wx:if="{{newsList.length === 0 && !isLoading}}" 
+                  type="{{isSearching ? 'search' : 'news'}}"
+                  tip="{{isSearching ? '未找到相关内容' : '暂无新闻'}}" />
+
+    <!-- 加载更多 -->
+    <view wx:if="{{isLoading}}" class="loading-more">
+      <text>加载中...</text>
+    </view>
+    
+    <view wx:if="{{noMore && newsList.length > 0}}" class="no-more">
+      <text>— 已经到底了 —</text>
+    </view>
+  </view>
+</view>

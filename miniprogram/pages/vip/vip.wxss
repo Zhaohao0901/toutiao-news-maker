@@ -1,0 +1,251 @@
+/* pages/vip/vip.wxss - 会员中心样式 */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #FAAD14 0%, #F5F5F5 40%);
+  padding-bottom: 160rpx;
+}
+
+/* VIP卡片 */
+.vip-card {
+  margin: 30rpx;
+  padding: 40rpx 32rpx;
+  background: linear-gradient(135deg, #333333 0%, #1A1A1A 100%);
+  border-radius: 24rpx;
+  color: #FFFFFF;
+}
+
+.vip-card.active {
+  background: linear-gradient(135deg, #FAAD14 0%, #D48806 100%);
+}
+
+.vip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.vip-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.vip-crown {
+  font-size: 48rpx;
+}
+
+.vip-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.vip-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-top: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.vip-expire {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.vip-days {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.vip-promo {
+  margin-top: 10rpx;
+}
+
+.promo-text {
+  font-size: 28rpx;
+  opacity: 0.9;
+}
+
+/* 会员权益 */
+.benefits-section {
+  margin: 30rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  margin-bottom: 24rpx;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24rpx;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-icon {
+  font-size: 48rpx;
+  margin-bottom: 12rpx;
+}
+
+.benefit-title {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  margin-bottom: 8rpx;
+}
+
+.benefit-desc {
+  font-size: 20rpx;
+  color: #999999;
+}
+
+/* 套餐选择 */
+.packages-section {
+  margin: 30rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 30rpx;
+}
+
+.package-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.package-card {
+  position: relative;
+  padding: 30rpx;
+  background-color: #F9F9F9;
+  border-radius: 16rpx;
+  border: 3rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.package-card.selected {
+  border-color: #FAAD14;
+  background-color: #FFFBE6;
+}
+
+.package-card.recommended {
+  border-color: #FAAD14;
+}
+
+.recommend-badge {
+  position: absolute;
+  top: -2rpx;
+  right: -2rpx;
+  background-color: #FAAD14;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 0 16rpx 0 16rpx;
+}
+
+.package-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+  margin-bottom: 16rpx;
+}
+
+.package-price-area {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 12rpx;
+}
+
+.price-symbol {
+  font-size: 28rpx;
+  color: #E8002D;
+  font-weight: bold;
+}
+
+.price-value {
+  font-size: 56rpx;
+  color: #E8002D;
+  font-weight: bold;
+  margin: 0 4rpx;
+}
+
+.price-period {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.package-original {
+  font-size: 22rpx;
+  color: #999999;
+  text-decoration: line-through;
+  margin-bottom: 8rpx;
+}
+
+.package-discount {
+  display: inline-block;
+  font-size: 22rpx;
+  color: #E8002D;
+  background-color: #FFF0F0;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  margin-bottom: 12rpx;
+}
+
+.package-desc {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 底部操作 */
+.bottom-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 32rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background-color: #FFFFFF;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vip-btn {
+  width: 100%;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 48rpx;
+  border: none;
+}
+
+.vip-btn.open {
+  background: linear-gradient(135deg, #FAAD14 0%, #D48806 100%);
+}
+
+.vip-btn.renew {
+  background: linear-gradient(135deg, #E8002D 0%, #FF4D6A 100%);
+}
+
+.agreement-tip {
+  font-size: 22rpx;
+  color: #999999;
+  margin-top: 16rpx;
+}

@@ -1,0 +1,140 @@
+/* components/business/news-editor/news-editor.wxss - 新闻编辑器样式 */
+.news-editor {
+  padding: 20rpx;
+  background-color: #FFFFFF;
+}
+
+.editor-section {
+  margin-bottom: 40rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.section-tip {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.char-count {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.char-count.over-limit {
+  color: #E8002D;
+}
+
+.title-input {
+  width: 100%;
+  height: 88rpx;
+  padding: 0 24rpx;
+  font-size: 32rpx;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.body-textarea {
+  width: 100%;
+  min-height: 300rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+  line-height: 1.6;
+  border: 2rpx solid #EEEEEE;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: #999999;
+  font-size: 28rpx;
+}
+
+.image-upload-area {
+  width: 100%;
+  height: 400rpx;
+  border: 2rpx dashed #DDDDDD;
+  border-radius: 12rpx;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-text {
+  color: #FFFFFF;
+  font-size: 24rpx;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-icon {
+  font-size: 80rpx;
+  color: #CCCCCC;
+  line-height: 1;
+}
+
+.upload-text {
+  font-size: 28rpx;
+  color: #999999;
+  margin-top: 16rpx;
+}
+
+.ai-rewrite-btn {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #FFFFFF;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  border: none;
+  position: relative;
+}
+
+.ai-rewrite-btn[disabled] {
+  background: #CCCCCC;
+}
+
+.cost-tip {
+  position: absolute;
+  right: 30rpx;
+  font-size: 24rpx;
+  opacity: 0.8;
+}

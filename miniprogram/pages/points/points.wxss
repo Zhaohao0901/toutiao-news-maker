@@ -1,0 +1,131 @@
+/* pages/points/points.wxss - 积分中心样式 */
+.page-container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 40rpx;
+}
+
+/* 通用区块 */
+.section {
+  margin: 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 24rpx;
+}
+
+.section-header {
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+/* 积分套餐 */
+.points-packages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  background-color: #F9F9F9;
+  border-radius: 12rpx;
+  border: 2rpx solid #EEEEEE;
+  transition: all 0.3s ease;
+}
+
+.package-card.recommended {
+  border-color: #E8002D;
+  background-color: #FFF5F5;
+}
+
+.recommend-badge {
+  position: absolute;
+  top: -2rpx;
+  right: -2rpx;
+  background-color: #E8002D;
+  color: #FFFFFF;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 0 12rpx 0 12rpx;
+}
+
+.package-name {
+  font-size: 26rpx;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+.package-points {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #E8002D;
+  margin-bottom: 8rpx;
+}
+
+.package-price {
+  font-size: 32rpx;
+  color: #1A1A1A;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.package-original {
+  font-size: 22rpx;
+  color: #999999;
+  text-decoration: line-through;
+}
+
+/* 积分明细 */
+.points-history {
+  /* 无特殊样式，使用列表样式 */
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-type {
+  font-size: 28rpx;
+  color: #1A1A1A;
+  margin-bottom: 8rpx;
+}
+
+.history-time {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.history-amount {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.history-amount.positive {
+  color: #07C160;
+}
+
+.history-amount.negative {
+  color: #E8002D;
+}

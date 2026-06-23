@@ -1,0 +1,90 @@
+/* components/business/step-progress/step-progress.wxss - 步骤进度条样式 */
+.step-progress {
+  width: 100%;
+  padding: 30rpx 20rpx;
+  background-color: #FFFFFF;
+}
+
+.steps-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.step-circle {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: #E0E0E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  transition: all 0.3s ease;
+}
+
+.step-item.active .step-circle {
+  background-color: #E8002D;
+  box-shadow: 0 4rpx 12rpx rgba(232, 0, 45, 0.3);
+}
+
+.step-item.completed .step-circle {
+  background-color: #07C160;
+}
+
+.step-number {
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: bold;
+}
+
+.step-item.active .step-number {
+  color: #FFFFFF;
+}
+
+.icon-check {
+  font-size: 28rpx;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.step-name {
+  font-size: 22rpx;
+  color: #999999;
+  text-align: center;
+  margin-top: 4rpx;
+}
+
+.step-item.active .step-name {
+  color: #E8002D;
+  font-weight: bold;
+}
+
+.step-item.completed .step-name {
+  color: #07C160;
+}
+
+.step-line {
+  position: absolute;
+  top: 30rpx;
+  left: 50%;
+  width: 100%;
+  height: 4rpx;
+  background-color: #E0E0E0;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.step-line.completed {
+  background-color: #07C160;
+}

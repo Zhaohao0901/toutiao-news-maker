@@ -1,0 +1,80 @@
+<!--pages/category/category.wxml - 题材库页面-->
+<view class="page-container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" 
+             placeholder="搜索题材内容" 
+             placeholder-class="placeholder"
+             value="{{searchKeyword}}"
+             bindinput="onSearchInput"
+             bindconfirm="onSearchConfirm" />
+      <text wx:if="{{searchKeyword}}" class="clear-btn" bindtap="onClearSearch">×</text>
+    </view>
+  </view>
+
+  <view class="content-layout">
+    <!-- 左侧分类导航 -->
+    <scroll-view class="left-nav" 
+                 scroll-y 
+                 scroll-into-view="{{scrollIntoId}}"
+                 scroll-with-animation>
+      <view wx:for="{{categories}}" 
+            wx:key="key"
+            id="nav-{{item.key}}"
+            class="nav-item {{activeCategory === item.key ? 'active' : ''}}"
+            data-category="{{item.key}}"
+            bindtap="onCategoryTap">
+        <text class="nav-icon">{{item.icon}}</text>
+        <text class="nav-name">{{item.label}}</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧内容列表 -->
+    <scroll-view class="right-content" 
+                 scroll-y 
+                 bindscrolltolower="onScrollToLower">
+      
+      <!-- 顶部Tab切换 -->
+      <view class="content-tabs">
+        <view class="tab-item {{activeTab === 'featured' ? 'active' : ''}}"
+              data-tab="featured"
+              bindtap="onTabChange">
+          <text>精选</text>
+        </view>
+        <view class="tab-item {{activeTab === 'hot' ? 'active' : ''}}"
+              data-tab="hot"
+              bindtap="onTabChange">
+          <text>热门</text>
+        </view>
+        <view class="tab-item {{activeTab === 'latest' ? 'active' : ''}}"
+              data-tab="latest"
+              bindtap="onTabChange">
+          <text>最新</text>
+        </view>
+      </view>
+
+      <!-- 内容卡片列表 -->
+      <view class="content-list">
+        <block wx:for="{{contentList}}" wx:key="id">
+          <news-card item="{{item}}" bind:tap="onContentCardTap" />
+        </block>
+
+        <!-- 空状态 -->
+        <empty-state wx:if="{{contentList.length === 0 && !isLoading}}" 
+                      type="{{isSearching ? 'search' : 'news'}}"
+                      tip="{{isSearching ? '未找到相关内容' : '暂无内容'}}" />
+      </view>
+
+      <!-- 加载状态 -->
+      <view wx:if="{{isLoading}}" class="loading-more">
+        <text>加载中...</text>
+      </view>
+      
+      <view wx:if="{{noMore && contentList.length > 0}}" class="no-more">
+        <text>— 已经到底了 —</text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

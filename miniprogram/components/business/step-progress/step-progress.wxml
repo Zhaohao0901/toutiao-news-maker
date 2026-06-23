@@ -1,0 +1,22 @@
+<!--components/business/step-progress/step-progress.wxml - 步骤进度条组件-->
+<view class="step-progress">
+  <view class="steps-container">
+    <block wx:for="{{steps}}" wx:key="index">
+      <!-- 步骤项 -->
+      <view class="step-item {{index < currentStep ? 'completed' : ''}} {{index === currentStep ? 'active' : ''}}" 
+            data-index="{{index}}" 
+            bindtap="onStepTap">
+        <!-- 步骤圆圈 -->
+        <view class="step-circle">
+          <text wx:if="{{index < currentStep}}" class="iconfont icon-check">✓</text>
+          <text wx:elif="{{index === currentStep}}" class="step-number">{{index + 1}}</text>
+          <text wx:else class="step-number">{{index + 1}}</text>
+        </view>
+        <!-- 步骤名称 -->
+        <text class="step-name">{{item}}</text>
+        <!-- 连接线 -->
+        <view wx:if="{{index < steps.length - 1}}" class="step-line {{index < currentStep ? 'completed' : ''}}"></view>
+      </view>
+    </block>
+  </view>
+</view>

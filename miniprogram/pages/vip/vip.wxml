@@ -1,0 +1,68 @@
+<!--pages/vip/vip.wxml - 会员中心页面-->
+<view class="page-container">
+  <!-- VIP卡片 -->
+  <view class="vip-card {{isVip ? 'active' : ''}}">
+    <view class="vip-header">
+      <view class="vip-title-area">
+        <text class="vip-crown">👑</text>
+        <text class="vip-title">{{isVip ? 'VIP会员' : '开通VIP会员'}}</text>
+      </view>
+      <vip-badge wx:if="{{isVip}}" />
+    </view>
+
+    <view wx:if="{{isVip}}" class="vip-status">
+      <text class="vip-expire">会员到期日：{{vipExpireDate}}</text>
+      <text class="vip-days">还剩{{vipRemainingDays}}天</text>
+    </view>
+
+    <view wx:else class="vip-promo">
+      <text class="promo-text">开通即享5大权益</text>
+    </view>
+  </view>
+
+  <!-- 会员权益 -->
+  <view class="benefits-section">
+    <view class="section-title">会员权益</view>
+    <view class="benefits-grid">
+      <view wx:for="{{vipBenefits}}" 
+            wx:key="title"
+            class="benefit-item">
+        <text class="benefit-icon">{{item.icon}}</text>
+        <text class="benefit-title">{{item.title}}</text>
+        <text class="benefit-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 套餐选择 -->
+  <view class="packages-section">
+    <view class="section-title">选择套餐</view>
+    <view class="package-list">
+      <view wx:for="{{vipPackages}}" 
+            wx:key="id"
+            class="package-card {{item.id === selectedPackageId ? 'selected' : ''}} {{item.isRecommended ? 'recommended' : ''}}"
+            data-package="{{item}}"
+            bindtap="onPackageSelect">
+        <view wx:if="{{item.isRecommended}}" class="recommend-badge">推荐</view>
+        <text class="package-name">{{item.name}}</text>
+        <view class="package-price-area">
+          <text class="price-symbol">¥</text>
+          <text class="price-value">{{item.price}}</text>
+          <text class="price-period">/{{item.durationDays}}天</text>
+        </view>
+        <text wx:if="{{item.originalPrice}}" class="package-original">原价¥{{item.originalPrice}}</text>
+        <text class="package-discount">{{item.discount}}</text>
+        <text class="package-desc">{{item.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 开通/续费按钮 -->
+  <view class="bottom-action">
+    <button class="vip-btn {{isVip ? 'renew' : 'open'}}"
+            bindtap="onVipAction">
+      {{isVip ? '立即续费' : '立即开通'}}
+    </button>
+    <text class="agreement-tip">开通即表示同意《VIP会员服务协议》</text>
+  </view>
+</view>

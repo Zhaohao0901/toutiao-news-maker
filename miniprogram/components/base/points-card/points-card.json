@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vip-badge": "/components/base/vip-badge/vip-badge"
+  }
+}

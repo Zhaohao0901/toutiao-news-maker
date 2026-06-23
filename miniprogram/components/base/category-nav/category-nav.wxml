@@ -1,0 +1,18 @@
+<!--components/base/category-nav/category-nav.wxml - 题材分类导航-->
+<scroll-view class="category-nav" scroll-x enable-flex>
+  <view class="nav-item {{activeCategory === 'all' ? 'active' : ''}}"
+        data-category="all"
+        bindtap="onCategoryTap">
+    <text>全部</text>
+  </view>
+
+  <block wx:for="{{categories}}" wx:key="key">
+    <view class="nav-item {{activeCategory === item.key ? 'active' : ''}}"
+          id="nav-{{item.key}}"
+          data-category="{{item.key}}"
+          bindtap="onCategoryTap">
+      <text class="nav-icon">{{item.icon}}</text>
+      <text class="nav-label">{{item.label}}</text>
+    </view>
+  </block>
+</scroll-view>

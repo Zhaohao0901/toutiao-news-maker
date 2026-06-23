@@ -1,0 +1,19 @@
+<!--components/base/template-card/template-card.wxml - 模板卡片-->
+<view class="template-card" bindtap="onCardTap">
+  <image class="template-thumb" 
+         src="{{template.thumbnailUrl || template.coverUrl}}" 
+         mode="aspectFill" 
+         lazy-load />
+  
+  <view class="template-info">
+    <text class="template-name">{{template.name || '未命名模板'}}</text>
+    <view class="template-meta">
+      <text class="use-count">{{template.useCount || 0}}人使用</text>
+      <text wx:if="{{template.isVipOnly}}" class="vip-tag">VIP</text>
+      <text wx:if="{{template.pointsCost > 0}}" class="points-tag">{{template.pointsCost}}积分</text>
+    </view>
+  </view>
+
+  <!-- 选中态 -->
+  <view wx:if="{{selected}}" class="selected-badge">✓</view>
+</view>

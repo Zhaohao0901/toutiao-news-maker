@@ -1,0 +1,138 @@
+{
+  "envId": "toutiao-news-maker-env",
+  "functionRoot": "cloudfunctions",
+  "functions": [
+    {
+      "name": "user-login",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "content-getContentList",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "content-searchContent",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "content-getBannerList",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "content-getContentDetail",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "content-getFavorites",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "template-getTemplateList",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "template-getTemplateDetail",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "make-checkPoints",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "make-consumePoints",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "make-saveWork",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "make-getMyWorks",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "make-aiRewrite",
+      "handler": "index.main",
+      "timeout": 30,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "points-signIn",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "points-adReward",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "points-getPointsDetail",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "points-buyPoints",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "vip-getVipInfo",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "vip-subscribeVip",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "vip-checkVipStatus",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "pay-createOrder",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    },
+    {
+      "name": "pay-payCallback",
+      "handler": "index.main",
+      "timeout": 10,
+      "runtime": "Nodejs12.13"
+    }
+  ]
+}

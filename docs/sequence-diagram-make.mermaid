@@ -1,0 +1,60 @@
+sequenceDiagram
+    participant U as 用户
+    participant MP as 小程序(make页)
+    participant CF as 云函数
+    participant DB as 云数据库
+    participant CS as 云存储
+    participant CE as Canvas引擎
+
+    U->>MP: 点击TabBar"制作"按钮
+    MP->>CF: template/getTemplateList({category, is_vip})
+    CF->>DB: 查询templates集合
+    DB-->>CF: 模板列表数据
+    CF-->>MP: 返回模板列表
+
+    U->>MP: 选择题材+模板
+    MP->>CF: template/getTemplateDetail({template_id})
+    CF->>DB: 查询template详情
+    DB-->>CF: 含layout_config的完整模板
+    CF-->>MP: 返回模板详情
+
+    U->>MP: 进入编辑步骤(Step2)
+    MP->>MP: 渲染news-editor组件
+    U->>MP: 编辑标题/正文/配图
+    
+    U->>MP: 点击"实时预览"(Step3)
+    MP->>CE: canvas-engine.render(layout_config, edit_data)
+    CE->>MP: 绘制Canvas实时预览图
+    MP-->>U: 展示预览效果
+
+    U->>MP: 点击"生成"(Step4)
+    MP->>CF: make/checkPoints({cost_type: "normal"})
+    CF->>DB: 查询users.points_balance & is_vip
+    DB-->>CF: 返回积分+会员状态
+    
+    alt 积分不足且非会员
+        CF-->>MP: {sufficient: false, balance, cost}
+        MP-->>U: 弹出积分不足引导(充值/开通VIP)
+    else 积分充足或会员
+        CF-->>MP: {sufficient: true, balance, cost, is_vip}
+        
+        MP->>CE: canvas-engine.generateFullImage(layout_config, edit_data, watermark_flag)
+        CE-->>MP: 返回Canvas图片临时路径
+        
+        MP->>CS: wx.cloud.uploadFile(生成的图片)
+        CS-->>MP: 返回image_url(云存储路径)
+        
+        MP->>CF: make/consumePoints({cost_type: "normal"})
+        CF->>DB: 更新users.points_balance(-2分)
+        CF->>DB: 新增points_records({type: "make_consumption", amount: -2})
+        DB-->>CF: 更新成功
+        CF-->>MP: {success, balance_after}
+        
+        MP->>CF: make/saveWork({template_id, title, body_text, image_url, edit_data, has_watermark})
+        CF->>DB: 新增works记录
+        CF->>DB: 更新users.total_works_count(+1)
+        DB-->>CF: 保存成功
+        CF-->>MP: {work_id, success}
+        
+        MP-->>U: 生成成功 → 保存相册/分享/查看作品
+    end

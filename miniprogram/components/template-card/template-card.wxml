@@ -1,0 +1,34 @@
+<!-- components/template-card/template-card.wxml - 模板预览卡片 -->
+<view class="template-card card-hover" bindtap="onCardTap">
+  <!-- 模板封面 -->
+  <view class="template-card-cover">
+    <image
+      src="{{template.cover_image || defaultCover}}"
+      mode="aspectFill"
+      class="template-card-img"
+      lazy-load="{{true}}"
+    />
+    <!-- VIP标记 -->
+    <view class="template-card-vip-mark" wx:if="{{template.is_vip}}">
+      <vip-badge />
+    </view>
+    <!-- 使用次数 -->
+    <view class="template-card-use-count">
+      <text class="template-card-use-text">{{useCount}}人使用</text>
+    </view>
+  </view>
+
+  <!-- 模板信息 -->
+  <view class="template-card-info">
+    <text class="template-card-name text-ellipsis">{{template.name}}</text>
+    <text class="template-card-desc text-ellipsis-2">{{template.description}}</text>
+    <view class="template-card-footer flex-between">
+      <text class="tag {{template.is_vip ? 'tag-vip' : 'tag-primary'}}">
+        {{template.is_vip ? 'VIP专享' : categoryLabel}}
+      </text>
+      <text class="template-card-cost">
+        {{template.is_vip ? 'VIP免费' : costText}}
+      </text>
+    </view>
+  </view>
+</view>

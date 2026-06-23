@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "vip-badge": "/components/base/vip-badge/vip-badge",
+    "news-card": "/components/base/news-card/news-card",
+    "empty-state": "/components/base/empty-state/empty-state"
+  }
+}

@@ -1,0 +1,118 @@
+/* pages/home/home.wxss - 首页样式 */
+.page-container {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 20rpx;
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  background-color: #E8002D;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 36rpx;
+  padding: 0 24rpx;
+  height: 72rpx;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  height: 72rpx;
+}
+
+.placeholder {
+  color: #999999;
+}
+
+.clear-btn {
+  font-size: 32rpx;
+  color: #999999;
+  padding: 0 12rpx;
+}
+
+.notification-btn {
+  position: relative;
+  margin-left: 20rpx;
+  padding: 12rpx;
+}
+
+.notif-icon {
+  font-size: 40rpx;
+}
+
+.notif-dot {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #07C160;
+  border-radius: 50%;
+}
+
+/* Banner轮播 */
+.banner-section {
+  padding: 20rpx 24rpx;
+}
+
+.banner-swiper {
+  height: 320rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+/* 题材分类 */
+.category-section {
+  background-color: #FFFFFF;
+  padding: 20rpx 0;
+  margin-bottom: 20rpx;
+}
+
+/* 新闻列表 */
+.news-list {
+  padding: 0 24rpx;
+}
+
+.search-result-tip {
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #666666;
+}
+
+/* 加载状态 */
+.loading-more {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.no-more {
+  text-align: center;
+  padding: 30rpx;
+  font-size: 24rpx;
+  color: #CCCCCC;
+}

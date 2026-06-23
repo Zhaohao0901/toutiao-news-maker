@@ -1,0 +1,20 @@
+/* components/vip-badge/vip-badge.wxss */
+
+.vip-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, var(--color-vip-gold), #F7C948);
+  border-radius: var(--radius-sm);
+  min-width: 32px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.vip-badge-text {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: 0.5px;
+}

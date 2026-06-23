@@ -1,0 +1,55 @@
+sequenceDiagram
+    participant U as 用户
+    participant MP as 小程序
+    participant CF as 云函数
+    participant DB as 云数据库
+    participant AD as 激励广告SDK
+
+    rect rgb(230, 245, 255)
+        Note over U,AD: 签到获取积分
+        U->>MP: 点击"签到"
+        MP->>CF: points/signIn({})
+        CF->>DB: 查询users.last_sign_date, continuous_sign_days
+        DB-->>CF: 返回签到状态
+        
+        alt 今日已签到
+            CF-->>MP: {success: false, msg: "今日已签到"}
+            MP-->>U: 提示"今日已签到"
+        else 今日未签到
+            CF->>CF: 计算签到奖励(连续天数+1→+1至+5分)
+            CF->>DB: 更新users.points_balance(+N分), last_sign_date, continuous_sign_days
+            CF->>DB: 新增points_records({type: "sign_in", amount: +N})
+            CF->>DB: 新增sign_records({openid, sign_date, points_earned, continuous_days})
+            DB-->>CF: 更新成功
+            CF-->>MP: {success, points_earned, continuous_days, balance_after}
+            MP-->>U: 签到成功动画+N积分
+        end
+    end
+
+    rect rgb(255, 245, 230)
+        Note over U,AD: 广告获取积分
+        U->>MP: 点击"看广告得积分"
+        MP->>AD: wx.createRewardedVideoAd().show()
+        AD-->>U: 播放激励广告
+        U-->>AD: 观看完成回调
+        
+        alt 用户完整观看
+            AD-->>MP: onClose({isEnded: true})
+            MP->>CF: points/adReward({ad_unit_id})
+            CF->>DB: 查询今日广告积分次数(上限5次)
+            
+            alt 未达上限
+                CF->>DB: 更新users.points_balance(+2分)
+                CF->>DB: 新增points_records({type: "ad_reward", amount: +2})
+                DB-->>CF: 更新成功
+                CF-->>MP: {success, points_earned: 2, balance_after}
+                MP-->>U: +2积分动画反馈
+            else 已达上限
+                CF-->>MP: {success: false, msg: "今日广告积分已达上限"}
+                MP-->>U: 提示已达上限
+            end
+        else 用户中途关闭
+            AD-->>MP: onClose({isEnded: false})
+            MP-->>U: 提示需完整观看
+        end
+    end
