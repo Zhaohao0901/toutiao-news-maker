@@ -216,19 +216,17 @@
   margin: var(--spacing-lg) 0;
 }
 
-.divider-text::before,
-.divider-text::after {
-  content: '';
+.divider-text .divider-line {
   flex: 1;
   height: 1px;
   background-color: var(--color-divider);
 }
 
-.divider-text::before {
+.divider-text .divider-line-left {
   margin-right: var(--spacing-md);
 }
 
-.divider-text::after {
+.divider-text .divider-line-right {
   margin-left: var(--spacing-md);
 }
 
@@ -239,20 +237,23 @@
   padding: var(--padding-cell);
   background-color: var(--color-card);
   position: relative;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.list-item:last-child {
+  border-bottom: none;
 }
 
 .list-item:active {
   background-color: var(--color-border-light);
 }
 
-.list-item-border::after {
-  content: '';
-  position: absolute;
-  left: var(--spacing-lg);
-  bottom: 0;
-  right: 0;
-  height: 1px;
-  background-color: var(--color-divider);
+.list-item-border {
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.list-item-border:last-child {
+  border-bottom: none;
 }
 
 /* ========== 头像 ========== */
@@ -374,16 +375,6 @@
 .nav-tab-active {
   color: var(--color-primary);
   font-weight: var(--font-weight-bold);
-}
-
-.nav-tab-active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 3px;
-  background-color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary);
   border-radius: 2px;
 }

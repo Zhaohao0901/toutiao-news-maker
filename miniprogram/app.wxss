@@ -16,12 +16,7 @@ page {
 }
 
 /* 全局盒模型设置 */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* 清除默认样式 */
-view, text, image, navigator, scroll-view, swiper, button, input, textarea {
+view, text, image, navigator, scroll-view, swiper, button, input, textarea, cover-view, cover-image, icon, rich-text, video, map, canvas {
   box-sizing: border-box;
 }
 
@@ -35,10 +30,6 @@ button {
   line-height: inherit;
   font-size: inherit;
   color: inherit;
-}
-
-button::after {
-  border: none;
 }
 
 /* 输入框重置 */

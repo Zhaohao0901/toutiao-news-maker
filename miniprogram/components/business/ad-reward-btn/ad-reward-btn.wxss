@@ -13,10 +13,6 @@
   line-height: normal;
 }
 
-.ad-btn::after {
-  border: none;
-}
-
 .ad-btn.disabled {
   background: #CCCCCC;
 }

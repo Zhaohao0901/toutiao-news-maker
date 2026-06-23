@@ -78,12 +78,6 @@
   justify-content: center;
   width: 24px;
   height: 24px;
-}
-
-.loading-spinner::after {
-  content: '';
-  width: 20px;
-  height: 20px;
   border: 2px solid var(--color-border);
   border-top-color: var(--color-primary);
   border-radius: var(--radius-circle);
@@ -99,11 +93,6 @@
 .loading-spinner-lg {
   width: 40px;
   height: 40px;
-}
-
-.loading-spinner-lg::after {
-  width: 36px;
-  height: 36px;
   border-width: 3px;
 }
 

@@ -118,17 +118,7 @@
 .tab-item.active {
   color: #E8002D;
   font-weight: bold;
-}
-
-.tab-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48rpx;
-  height: 4rpx;
-  background-color: #E8002D;
+  border-bottom: 4rpx solid #E8002D;
   border-radius: 2rpx;
 }
 
